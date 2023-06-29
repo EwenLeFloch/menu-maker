@@ -1,0 +1,539 @@
+Delivered-To: ewenlelf@gmail.com
+Received: by 2002:a17:906:4bcd:b0:978:90d0:e661 with SMTP id x13csp191634ejv;
+        Wed, 7 Jun 2023 13:49:27 -0700 (PDT)
+X-Received: by 2002:a05:620a:4d87:b0:75d:4757:f492 with SMTP id uw7-20020a05620a4d8700b0075d4757f492mr320230qkn.1.1686170967519;
+        Wed, 07 Jun 2023 13:49:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1686170967; cv=none;
+        d=google.com; s=arc-20160816;
+        b=EsZhqUOqmlACqVMI1EcZ1TqIgESVbUWJ2Ck4Rxu5kSeXuU+lvaefSg9KlTxZ8t16Cr
+         FMuQJ1P8JXdfDAZi8l+8ebAIQ7XqbWRxa/kRkLWNGEMH63q+fw2oZ0NupOAZArRKBH2p
+         IZyujldRIVVzumMH0J5U8lLfamK8TRjbg0MuHN6mbY4A13awz0ktX0jJHaGrKc7i8khw
+         jC2dJ5OLBahWvRffj44qsWU5CLlmMRF57WmTslw/F93B8SGh//u5WJMFoKApTnzQV1kW
+         6erF2doitzoBozAervuUewgehLWJyRPEo97pcSCeOEjzcgmM5EQtmPMoFHQG4RHjTlKi
+         D1zg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=XaUAnythMBZDOm94Icawnu01BVlsDYPdgNVcviND3bo=;
+        b=FC0TZ3EnicvHgG/YyjoxOrhCGXKyZ5W2Kx46u7WYojmT6QWtujFOctu8ACEfof6FMw
+         +F9sqHCwB579PtUoTX0gjH7Z8MBsfoS4WarzZmpjNgHb5j3EmzQPaaa+2ze/MQsQTtlh
+         VhMy2lMnbtbL/GGI46zFvs+quQffAw2ANkFMR+J8Nu4GARepjGJOXCoX3GG2No6hLFN3
+         0PsyrnNNittLKYR0S/9uSW1xgw2bSulWU7NcUrep3RVENieiE0rrhrs8kA/J7yKYQV/+
+         EF2EZDlry4kDvh/EkGdLdr7zHAKAxkXjaQoO4ZaJXtKnpN+UR21JGbc42aD5SjbpqT/W
+         EEmg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20221208 header.b=auooxPpA;
+       spf=pass (google.com: domain of antoine.crzt@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=antoine.crzt@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <antoine.crzt@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id b31-20020a05620a271f00b0075afc577f52sor369026qkp.2.2023.06.07.13.49.27
+        for <ewenlelf@gmail.com>
+        (Google Transport Security);
+        Wed, 07 Jun 2023 13:49:27 -0700 (PDT)
+Received-SPF: pass (google.com: domain of antoine.crzt@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20221208 header.b=auooxPpA;
+       spf=pass (google.com: domain of antoine.crzt@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=antoine.crzt@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20221208; t=1686170967; x=1688762967;
+        h=to:subject:message-id:date:from:in-reply-to:references:mime-version
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=XaUAnythMBZDOm94Icawnu01BVlsDYPdgNVcviND3bo=;
+        b=auooxPpAdzlOX0HYniME+bc/9yxhhS0F5duKAF9gLI2I9/lVg4PvsMNdNAgHRBto5y
+         p4jhAVtR1G7Xi0mw2Huz29hz2sPuD1/Yts17Omz1Pcq0TcpeSCn4HaEYv5SbzWjJ2v51
+         FfXb4D/eTj4e9hwJ0sA3xeA+4EyWWHaekRO5lCHJLxpZDt4XnKV0cTjtGKuPPdwJF5DI
+         a3VsJy3GEseZnKnHUFmj1kdx7zzGkQFKONWLqzC/DQT/XMv3tBsTgrxRAaIPiXwNYia6
+         8DJCrsrQYNUfQtIAUAJWT6BhDwL2cWrYTlXh6FJLXKYwYSqtvu0XBVYVJeJYOgLzfIjx
+         aFXQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1686170967; x=1688762967;
+        h=to:subject:message-id:date:from:in-reply-to:references:mime-version
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=XaUAnythMBZDOm94Icawnu01BVlsDYPdgNVcviND3bo=;
+        b=CgA+p/7iaGA7A+GmJvxbSamekRWg9JzjgZJq8pWbauUXcXJOqJcPFyjYsGpkrx24/P
+         1rftg6KmtTr0TEcWC2HO8uwxEeZUXjp9u+rE4uTP0De62sXpiD04pBWvl1X9I8IQdIIn
+         OQOZ3hQpmcmFXAzUDz5R+cWpcWFthGm3CXFyTucGJU7rA1rlEVhx4p6xQNRMw0KYRxjR
+         uzBtecREDf/DjuqhxhOQ8FHYmzHZO+ecpNOSlCGao5SVxHml8bQAN8Gr6JlRyPnbv+/F
+         f/pG5XVyIbNO7/ddxUq4YtlxUbY18LXYHUZbsvZPK54+3EAllAUIrTvXGzVVo9M13aJj
+         Zpzw==
+X-Gm-Message-State: AC+VfDw0yl2oZqoJ1I+t2jMeoCuGbFCXlSbYtDGHAzteOzwWX2B/jS0L
+	q0VDgf+5q1TEk2M63sTZNAVALIiXm4jAbiRIuJRvo3Fn+x4=
+X-Google-Smtp-Source: ACHHUZ50smb/FhwNMNEqY4T3GRoztTjnYzkUzVAb4enIsKhkNp2/a0iD4ewhiUGgRw1Aonhc2NWONfg3PRbwImBBFaQ=
+X-Received: by 2002:a05:622a:1345:b0:3f4:f5f4:d5fc with SMTP id
+ w5-20020a05622a134500b003f4f5f4d5fcmr346184qtk.11.1686170966717; Wed, 07 Jun
+ 2023 13:49:26 -0700 (PDT)
+MIME-Version: 1.0
+References: <CAOe7FA=8C+4eG3gG+_jPN0aMHvi4zC7nzzg4vmuEkfX3V-UhPQ@mail.gmail.com>
+ <CAK3xEfb0kPK6mgrfoBqEp06M9zRaGPOfwBR3iKp3+vD5Zkvtxg@mail.gmail.com>
+ <CAOe7FA=0m5bK30zKiX-gRwjB_QqDb5QUC-sSfEPt-bfwCAEZPA@mail.gmail.com>
+ <CAK3xEfbXYhtJjxpf-J5QmPskWLnS63A_M3NvWP5kKjZ5DBb2wQ@mail.gmail.com> <CAOe7FA=0sWaD33zZ-o95giy7nu6H5CaDZ_GQntcowDmb=2-m7A@mail.gmail.com>
+In-Reply-To: <CAOe7FA=0sWaD33zZ-o95giy7nu6H5CaDZ_GQntcowDmb=2-m7A@mail.gmail.com>
+From: Antoine Creuzet <antoine.crzt@gmail.com>
+Date: Wed, 7 Jun 2023 22:49:15 +0200
+Message-ID: <CAOe7FAm4Vwy8ZrUOk-zF_U9UkF-cjaRjPBBDXQMgOD9mT2cn2A@mail.gmail.com>
+Subject: Re: Sessions de mentorat
+To: Ewen Lefloch <ewenlelf@gmail.com>
+Content-Type: multipart/alternative; boundary="0000000000008077c605fd9045b9"
+
+--0000000000008077c605fd9045b9
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+Ce projet est assez =C2=AB complexe =C2=BB : il demande en effet de se rens=
+eigner sur
+plein de technologies, qui am=C3=A8nent =C3=A0 se reiseigner sur d=E2=80=99=
+autres notions=E2=80=A6 et
+ainsi de suite.
+L=E2=80=99id=C3=A9e n=E2=80=99est pas de faire de toi un professionnel de R=
+eact, de Ionic, de
+Node.JS ou encore de PHP. L=E2=80=99id=C3=A9e est davantage de te faire com=
+prendre le
+fonctionnement global d=E2=80=99une appli d=C3=A9coup=C3=A9e en micro servi=
+ces (le back, le
+front, la base de donn=C3=A9es, la communication via API=E2=80=A6).
+
+Concernant les besoins : concentre-toi sur les 4 clairement list=C3=A9s :
+diffuser, personnaliser, rediger, imprimer un menu (tu peux en ajouter si
+tj le souhaites mais pas obligatoire. Je pense notamment au probl=C3=A8me d=
+e la
+connexion passwordless). C=E2=80=99est sur ces 4 points que tu dois d=C3=A9=
+finir les
+librairies =C3=A0 utiliser (s=E2=80=99il y en a besoin !).
+Exemple : pour imprimer le menu, peut etre existe-t-il des librairies qui
+permettent de previsualiser l=E2=80=99impression.
+Exemple 2 : pour diffuser, pareil avec une previsualisation PDF
+
+Pour la personnalisation avec changement de couleur et de typo :
+- Quelque soit le framework que tu decides de proposer (si tu en proposes
+un), il n=E2=80=99y q pas besoin de librairie supplementaire. C=E2=80=99est=
+ du changement
+en JS classique. Par contre se pose la probl=C3=A9matique du stockage : tu =
+sais
+que les modifs du DOM en JS ne sont pss persistantes si tu reload la pages.
+Il faut donc stocker ces personnalisations. Tu peux t=E2=80=99inspirer du P=
+3 : si
+stockage, alors base de donn=C3=A9es. Si base de donn=C3=A9es, backend. Si =
+backend,
+API ;)
+
+Encore une fois, je te rassure en te disant qu=E2=80=99il n=E2=80=99est pas=
+ attendu de toi
+que tu sois un pro de React sur ce projet. Mais savoir ce qu=E2=80=99est un
+framework front, son interet, et une librairie, c=E2=80=99est =C3=A7a qu=E2=
+=80=99on attend.
+
+Comment faire pour d=C3=A9buter le projet :
+- Pars des 4 besoins cit=C3=A9s pr=C3=A9c=C3=A9demment
+- Ensuite concentre-toi sur la veille technique.
+Voici les crit=C3=A8res :
+
+La veille porte sur 3 th=C3=A9matiques parmi les sujets suivants :
+
+   - framework front-end ;
+   - librairies d=E2=80=99interfaces utilisateur,
+   - librairies CSS ;
+   - technologies pour communiquer entre le front-end et le back-end ;
+   - outils de code (des extensions VSCode, par exemple) ;
+   - m=C3=A9thodes d'organisation pour le code (code review, peer programmi=
+ng).
+
+=E2=9D=92 Pour chacune des th=C3=A9matiques, 3 =C3=A0 5 sources d=E2=80=99i=
+nformation diff=C3=A9rentes
+sont choisies.
+
+=E2=9D=92 Les sources sont fiables et pertinentes (sites officiels, article=
+s
+scientifiques=E2=80=A6).
+
+- Ensuite, en fonction de toutes tes recherches, tu auras des solutions aux
+4 besoins. Les solutions c=E2=80=99est par exemple une librairie, les langa=
+ges
+utilis=C3=A9s, un type de BDD.
+Exemple pour =C2=AB diffuser un menu =C2=BB : solution retenue : Vue.JS qui=
+ fait des
+fetch sur l=E2=80=99API de deliveroo. Pour pdf, librairie vue-pdf
+(Je parle de vue.js et de vue-pdf au pif, je ne sais pas si cette librairie
+existe).
+
+- Tu devras te poser des questions ensuite sur le type d=E2=80=99API : SOAP=
+ ou REST
+?
+- Sur le back : y=E2=80=99a-t-il besoin d=E2=80=99un back ? Quel langage pr=
+econises tu et
+pourquoi ?
+- Sur le type de base de donn=C3=A9es : relationnel ou non ? Quelle base de
+donn=C3=A9es selon la reponse precedente ?
+- Les services tiers : c=E2=80=99est les API + analytics
+- Le reste ca devrait aller je crois, pour la maintenance c=E2=80=99est les=
+ grands
+points =C3=A0 prendre en compte
+
+=C2=AB Autre question, au niveau du Back-end qu'elle est la limite avec le
+Front. Par exemple, le client doit pouvoir exporter son menu sur deliveroo
+en 1 clique. Donc j'imagine que je vais utiliser l'API de deliveroo. Mais
+dans les sp=C3=A9cifications techniques, je note =C3=A7a c=C3=B4t=C3=A9 Fro=
+nt parce que le
+client doit cliquer sur un bouton, ou c=C3=B4t=C3=A9 back parce que j'utili=
+se une API
+? =C2=BB
+C=E2=80=99est c=C3=B4t=C3=A9 front dans ton cas. Car t=E2=80=99as pas de de=
+v back (php, node.js ou
+autre), t=E2=80=99as que du dev front avec un appel fetch (ou axios) sur un
+endpoint de l=E2=80=99API Deliveroo
+
+Pour terminer, sur le kanban, c=E2=80=99est finalement une liste de taches =
+qui
+reprennent ce qu=E2=80=99il faut pour appliquer les solutions que t=E2=80=
+=99auras
+preconisees. Les t=C3=A2ches vont de la definition des specifications jusqu=
+=E2=80=99=C3=A0 l=C3=A0
+la livraison du site (donc deploiement compris) Pas besoin d=E2=80=99etre t=
+r=C3=A8s
+pr=C3=A9cis sur les cartes que ru feras, tu ne peux pas connaitre sur le bo=
+ut
+des doigts comment on deploie un site, ou comment on parametre une base de
+donn=C3=A9es etc.
+
+J=E2=80=99esp=C3=A8re que ca t=E2=80=99aidera.
+
+Ce projet est difficile pour tous les =C3=A9tudiants, donc pas d=E2=80=99in=
+qui=C3=A9tude si
+tu penses que tu es le seul a etre coinc=C3=A9 ;).
+
+Bonne soiree,
+
+
+Le mer. 7 juin 2023 =C3=A0 13:56, Antoine Creuzet <antoine.crzt@gmail.com> =
+a
+=C3=A9crit :
+
+> Message bien vu. Je te r=C3=A9ponds dans la soir=C3=A9e !
+>
+> Le mer. 7 juin 2023 =C3=A0 11:07, Ewen Lefloch <ewenlelf@gmail.com> a =C3=
+=A9crit :
+>
+>> Bonjour Antoine,
+>>
+>> Je t'envoie les questions pour la session de cette semaine. Je t'avoue
+>> que je suis compl=C3=A8tement perdu dans ce projet, je ne comprends pas =
+pourquoi
+>> on me demande de faire le travail entier du Product Owner ou comment
+>> parvenir =C3=A0 l'oral =C3=A0 expliquer =C3=A0 quelqu'un qui n'en a rien=
+ =C3=A0 faire que mon
+>> =C3=A9quipe a fait un travail de veille technologique.
+>> J'ai du mal =C3=A0 comprendre aussi alors que je n'y connais rien en rea=
+ct ou
+>> en backend comment trouver les infos. Je m'explique, il faut d=C3=A9term=
+iner les
+>> besoins gr=C3=A2ce aux User stories. Mais pour moi dessus tout est un be=
+soin,
+>> donc si on prend l'affichage en temps r=C3=A9el de la cr=C3=A9ation d'un=
+ menu sur la
+>> m=C3=AAme page. Je suis cens=C3=A9 fouiller toutes les librairies de rea=
+ct pour
+>> savoir si une d'elles fait =C3=A7a ? Pareil pour quand l'utilisateur veu=
+t
+>> changer de typographie ou exporter en pdf, il faut =C3=A0 chaque fois qu=
+e je
+>> fasse ces recherches ? C'est ultra long. Surtout que pour l'instant je n=
+'ai
+>> que les bases du html, css et Javascript. Donc quand je vois un article
+>> React Native, je perds un temps fou avant de comprendre que c'est pas la
+>> m=C3=AAme chose que React par exemple.
+>> Donc je t'avoue que je n'ai aucune id=C3=A9e de par o=C3=B9 commencer. J=
+'ai
+>> l'impression de devoir essayer de coder de mon c=C3=B4t=C3=A9 le site po=
+ur comprendre
+>> ce que je dois faire mais ce n'est pas l'exercice demand=C3=A9.
+>>
+>> Autre question, au niveau du Back-end qu'elle est la limite avec le
+>> Front. Par exemple, le client doit pouvoir exporter son menu sur deliver=
+oo
+>> en 1 clique. Donc j'imagine que je vais utiliser l'API de deliveroo. Mai=
+s
+>> dans les sp=C3=A9cifications techniques, je note =C3=A7a c=C3=B4t=C3=A9 =
+Front parce que le
+>> client doit cliquer sur un bouton, ou c=C3=B4t=C3=A9 back parce que j'ut=
+ilise une API
+>> ?
+>>
+>> Voil=C3=A0, comme tu peux voir, comme je ne comprends pas ce que ce proj=
+et
+>> vient faire dans la formation et aussi t=C3=B4t, je suis perdu. Et je n'=
+arrive
+>> pas =C3=A0 avancer, car je ne sais pas par o=C3=B9 commencer.
+>>
+>> Le sam. 3 juin 2023 =C3=A0 17:06, Antoine Creuzet <antoine.crzt@gmail.co=
+m> a
+>> =C3=A9crit :
+>>
+>>> Salut Ewen,
+>>>
+>>> =C3=87a va je te remercie.
+>>>
+>>> Ok c'est not=C3=A9. Je comprends tout =C3=A0 fait. Le projet gestion de=
+ projet
+>>> est, avec le P3 en Javascript, le plus dur de ta formation. Apr=C3=A8s,=
+ ce sera
+>>> plus simple, et + motivant.
+>>> Tu finances ta formation de ta poche donc tu es libre de t'organiser
+>>> comme tu le d=C3=A9sires. Dans ce que tu paies, tu as droit =C3=A0 1 se=
+ssion de 30min
+>>> par semaine + autant de soutenances que n=C3=A9cessaire.
+>>> Pour =C3=A9viter de perdre les sessions, je te propose qu'on les rattra=
+pe, si
+>>> tu le d=C3=A9sires, dans les semaines qui viennent. On s'arrangera.
+>>>
+>>> Pour reprendre des sessions, c'est ici :
+>>> https://calendly.com/acrzt/mentorat
+>>>
+>>> Bon courage, et bonne semaine =C3=A0 toi !
+>>>
+>>>
+>>>
+>>> Le ven. 2 juin 2023 =C3=A0 16:02, Ewen Lefloch <ewenlelf@gmail.com> a =
+=C3=A9crit :
+>>>
+>>>> Bonjour Antoine,
+>>>>
+>>>> Je vais bien et toi ?
+>>>>
+>>>> C'est de ma faute j'ai compl=C3=A8tement oubli=C3=A9 de caler des sess=
+ions, comme
+>>>> je fais les cours sur la gestion de projet et que j'avance pas du tout=
+ sur
+>>>> le projet en lui-m=C3=AAme je n'y pense pas. De plus, j'ai eu une pert=
+e de
+>>>> motivation jusqu'en d=C3=A9but de semaine donc j'ai tr=C3=A8s peu avan=
+c=C3=A9 l=C3=A0-dessus et
+>>>> me suis repos=C3=A9 quelques jours. Je vais fixer une session pour apr=
+=C3=A8s le 11
+>>>> et t'enverrais des questions par mail la semaine prochaine.
+>>>>
+>>>> Merci pour ton questionnement,
+>>>> Ewen
+>>>>
+>>>> Le lun. 29 mai 2023 =C3=A0 10:42, Antoine Creuzet <antoine.crzt@gmail.=
+com>
+>>>> a =C3=A9crit :
+>>>>
+>>>>> Salut Ewen,
+>>>>>
+>>>>> Comment vas-tu ?
+>>>>>
+>>>>> Cela fait un petit moment qu'on n'a pas eu de sessions ensemble (pas
+>>>>> la semaine derni=C3=A8re, et pas de rdv de pr=C3=A9vu cette semaine).
+>>>>> Est-ce que tu as des soucis particuliers de ton c=C3=B4t=C3=A9 / as b=
+esoin de
+>>>>> mettre en pause ta formation ?
+>>>>>
+>>>>> Tiens-moi au courant, on peut s'organiser en cons=C3=A9quence,
+>>>>> Antoine
+>>>>>
+>>>>
+
+--0000000000008077c605fd9045b9
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"auto">Ce projet est assez =C2=AB complexe =C2=BB : il demande e=
+n effet de se renseigner sur plein de technologies, qui am=C3=A8nent =C3=A0=
+ se reiseigner sur d=E2=80=99autres notions=E2=80=A6 et ainsi de suite.</di=
+v><div dir=3D"auto">L=E2=80=99id=C3=A9e n=E2=80=99est pas de faire de toi u=
+n professionnel de React, de Ionic, de Node.JS ou encore de PHP. L=E2=80=99=
+id=C3=A9e est davantage de te faire comprendre le fonctionnement global d=
+=E2=80=99une appli d=C3=A9coup=C3=A9e en micro services (le back, le front,=
+ la base de donn=C3=A9es, la communication via API=E2=80=A6).</div><div dir=
+=3D"auto"><br></div><div dir=3D"auto">Concernant les besoins : concentre-to=
+i sur les 4 clairement list=C3=A9s : diffuser, personnaliser, rediger, impr=
+imer un menu (tu peux en ajouter si tj le souhaites mais pas obligatoire. J=
+e pense notamment au probl=C3=A8me de la connexion passwordless). C=E2=80=
+=99est sur ces 4 points que tu dois d=C3=A9finir les librairies =C3=A0 util=
+iser (s=E2=80=99il y en a besoin !).</div><div dir=3D"auto">Exemple : pour =
+imprimer le menu, peut etre existe-t-il des librairies qui permettent de pr=
+evisualiser l=E2=80=99impression.=C2=A0</div><div dir=3D"auto">Exemple 2 : =
+pour diffuser, pareil avec une previsualisation PDF</div><div dir=3D"auto">=
+<br></div><div dir=3D"auto">Pour la personnalisation avec changement de cou=
+leur et de typo :</div><div dir=3D"auto">- Quelque soit le framework que tu=
+ decides de proposer (si tu en proposes un), il n=E2=80=99y q pas besoin de=
+ librairie supplementaire. C=E2=80=99est du changement en JS classique. Par=
+ contre se pose la probl=C3=A9matique du stockage : tu sais que les modifs =
+du DOM en JS ne sont pss persistantes si tu reload la pages. Il faut donc s=
+tocker ces personnalisations. Tu peux t=E2=80=99inspirer du P3 : si stockag=
+e, alors base de donn=C3=A9es. Si base de donn=C3=A9es, backend. Si backend=
+, API ;)</div><div dir=3D"auto"><br></div><div dir=3D"auto">Encore une fois=
+, je te rassure en te disant qu=E2=80=99il n=E2=80=99est pas attendu de toi=
+ que tu sois un pro de React sur ce projet. Mais savoir ce qu=E2=80=99est u=
+n framework front, son interet, et une librairie, c=E2=80=99est =C3=A7a qu=
+=E2=80=99on attend.</div><div dir=3D"auto"><br></div><div dir=3D"auto">Comm=
+ent faire pour d=C3=A9buter le projet :</div><div dir=3D"auto">- Pars des 4=
+ besoins cit=C3=A9s pr=C3=A9c=C3=A9demment</div><div dir=3D"auto">- Ensuite=
+ concentre-toi sur la veille technique.=C2=A0</div><div dir=3D"auto">Voici =
+les crit=C3=A8res :</div><div dir=3D"auto"><br></div><div dir=3D"auto"><p s=
+tyle=3D"outline-color:rgb(116,81,235);line-height:1.5rem;margin:10px 1rem 0=
+px;box-sizing:border-box;font-family:Inter,Inter-Regular;color:rgb(39,26,56=
+)">La veille porte sur 3 th=C3=A9matiques parmi les sujets suivants=C2=A0:<=
+/p><ul style=3D"outline-color:rgb(116,81,235);box-sizing:border-box;margin-=
+left:1rem;margin-right:1rem;font-family:Inter,Inter-Regular;color:rgb(39,26=
+,56)"><li style=3D"outline-color:rgb(116,81,235);font-size:inherit;line-hei=
+ght:1.5rem;box-sizing:border-box;font-family:Inter,Inter-Regular;color:var(=
+--clf-text-on-main)">framework front-end ;</li><li style=3D"outline-color:r=
+gb(116,81,235);font-size:inherit;line-height:1.5rem;box-sizing:border-box;f=
+ont-family:Inter,Inter-Regular;color:var(--clf-text-on-main)">librairies d=
+=E2=80=99interfaces utilisateur,</li><li style=3D"outline-color:rgb(116,81,=
+235);font-size:inherit;line-height:1.5rem;box-sizing:border-box;font-family=
+:Inter,Inter-Regular;color:var(--clf-text-on-main)">librairies CSS ;</li><l=
+i style=3D"outline-color:rgb(116,81,235);font-size:inherit;line-height:1.5r=
+em;box-sizing:border-box;font-family:Inter,Inter-Regular;color:var(--clf-te=
+xt-on-main)">technologies pour communiquer entre le front-end et le back-en=
+d=C2=A0;</li><li style=3D"outline-color:rgb(116,81,235);font-size:inherit;l=
+ine-height:1.5rem;box-sizing:border-box;font-family:Inter,Inter-Regular;col=
+or:var(--clf-text-on-main)">outils de code (des extensions VSCode, par exem=
+ple)=C2=A0;</li><li style=3D"outline-color:rgb(116,81,235);font-size:inheri=
+t;line-height:1.5rem;box-sizing:border-box;font-family:Inter,Inter-Regular;=
+color:var(--clf-text-on-main)">m=C3=A9thodes d&#39;organisation pour le cod=
+e (code review, peer programming).</li></ul><p style=3D"outline-color:rgb(1=
+16,81,235);line-height:1.5rem;margin:0px 1rem;box-sizing:border-box;font-fa=
+mily:Inter,Inter-Regular;color:rgb(39,26,56)">=E2=9D=92 Pour chacune des th=
+=C3=A9matiques, 3 =C3=A0 5 sources d=E2=80=99information diff=C3=A9rentes s=
+ont choisies.</p><p style=3D"outline-color:rgb(116,81,235);line-height:1.5r=
+em;margin:10px 1rem 0px;box-sizing:border-box;font-family:Inter,Inter-Regul=
+ar;color:rgb(39,26,56)">=E2=9D=92 Les sources sont fiables et pertinentes (=
+sites officiels, articles scientifiques=E2=80=A6).</p></div><div dir=3D"aut=
+o"><br></div><div dir=3D"auto">- Ensuite, en fonction de toutes tes recherc=
+hes, tu auras des solutions aux 4 besoins. Les solutions c=E2=80=99est par =
+exemple une librairie, les langages utilis=C3=A9s, un type de BDD.</div><di=
+v dir=3D"auto">Exemple pour =C2=AB diffuser un menu =C2=BB : solution reten=
+ue : Vue.JS qui fait des fetch sur l=E2=80=99API de deliveroo. Pour pdf, li=
+brairie vue-pdf</div><div dir=3D"auto">(Je parle de vue.js et de vue-pdf au=
+ pif, je ne sais pas si cette librairie existe).</div><div dir=3D"auto"><br=
+></div><div dir=3D"auto">- Tu devras te poser des questions ensuite sur le =
+type d=E2=80=99API : SOAP ou REST ?=C2=A0</div><div dir=3D"auto">- Sur le b=
+ack : y=E2=80=99a-t-il besoin d=E2=80=99un back ? Quel langage preconises t=
+u et pourquoi ?</div><div dir=3D"auto">- Sur le type de base de donn=C3=A9e=
+s : relationnel ou non ? Quelle base de donn=C3=A9es selon la reponse prece=
+dente ?=C2=A0</div><div dir=3D"auto">- Les services tiers : c=E2=80=99est l=
+es API + analytics</div><div dir=3D"auto">- Le reste ca devrait aller je cr=
+ois, pour la maintenance c=E2=80=99est les grands points =C3=A0 prendre en =
+compte</div><div dir=3D"auto"><br></div><div dir=3D"auto">=C2=AB=C2=A0<span=
+ style=3D"color:rgb(0,0,0)">Autre question, au niveau du Back-end qu&#39;el=
+le est la limite avec le Front. Par exemple, le client doit pouvoir exporte=
+r son menu sur deliveroo en 1 clique. Donc j&#39;imagine que je vais utilis=
+er l&#39;API de deliveroo. Mais dans les sp=C3=A9cifications techniques, je=
+ note =C3=A7a c=C3=B4t=C3=A9 Front parce que le client doit cliquer sur un =
+bouton, ou c=C3=B4t=C3=A9 back parce que j&#39;utilise une API ? =C2=BB</sp=
+an></div><div dir=3D"auto"><span style=3D"color:rgb(0,0,0)">C=E2=80=99est c=
+=C3=B4t=C3=A9 front dans ton cas. Car t=E2=80=99as pas de dev back (php, no=
+de.js ou autre), t=E2=80=99as que du dev front avec un appel fetch (ou axio=
+s) sur un endpoint de l=E2=80=99API Deliveroo</span></div><div dir=3D"auto"=
+><span style=3D"color:rgb(0,0,0)"><br></span></div><div dir=3D"auto"><span =
+style=3D"color:rgb(0,0,0)">Pour terminer, sur le kanban, c=E2=80=99est fina=
+lement une liste de taches qui reprennent ce qu=E2=80=99il faut pour appliq=
+uer les solutions que t=E2=80=99auras preconisees. Les t=C3=A2ches vont de =
+la definition des specifications jusqu=E2=80=99=C3=A0 l=C3=A0 la livraison =
+du site (donc deploiement compris) Pas besoin d=E2=80=99etre tr=C3=A8s pr=
+=C3=A9cis sur les cartes que ru feras, tu ne peux pas connaitre sur le bout=
+ des doigts comment on deploie un site, ou comment on parametre une base de=
+ donn=C3=A9es etc.</span></div><div dir=3D"auto"><br></div><div dir=3D"auto=
+">J=E2=80=99esp=C3=A8re que ca t=E2=80=99aidera.=C2=A0</div><div dir=3D"aut=
+o"><br></div><div dir=3D"auto">Ce projet est difficile pour tous les =C3=A9=
+tudiants, donc pas d=E2=80=99inqui=C3=A9tude si tu penses que tu es le seul=
+ a etre coinc=C3=A9 ;).</div><div dir=3D"auto"><br></div><div dir=3D"auto">=
+Bonne soiree,</div><div dir=3D"auto"><br></div><div dir=3D"auto"><br><div c=
+lass=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">Le=C2=A0mer. 7 j=
+uin 2023 =C3=A0 13:56, Antoine Creuzet &lt;<a href=3D"mailto:antoine.crzt@g=
+mail.com">antoine.crzt@gmail.com</a>&gt; a =C3=A9crit=C2=A0:<br></div><bloc=
+kquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left-=
+width:1px;border-left-style:solid;padding-left:1ex;border-left-color:rgb(20=
+4,204,204)"><div dir=3D"auto">Message bien vu. Je te r=C3=A9ponds dans la s=
+oir=C3=A9e !</div><div><br><div class=3D"gmail_quote"><div dir=3D"ltr" clas=
+s=3D"gmail_attr">Le=C2=A0mer. 7 juin 2023 =C3=A0 11:07, Ewen Lefloch &lt;<a=
+ href=3D"mailto:ewenlelf@gmail.com" target=3D"_blank">ewenlelf@gmail.com</a=
+>&gt; a =C3=A9crit=C2=A0:<br></div><blockquote class=3D"gmail_quote" style=
+=3D"margin:0px 0px 0px 0.8ex;border-left-width:1px;border-left-style:solid;=
+padding-left:1ex;border-left-color:rgb(204,204,204)"><div dir=3D"ltr">Bonjo=
+ur Antoine,<div><br></div><div>Je t&#39;envoie les questions pour la sessio=
+n de cette semaine. Je t&#39;avoue que je suis compl=C3=A8tement perdu dans=
+ ce projet, je ne comprends pas pourquoi on me demande de faire le travail =
+entier du Product Owner ou comment parvenir =C3=A0 l&#39;oral =C3=A0 expliq=
+uer =C3=A0 quelqu&#39;un qui n&#39;en a rien =C3=A0 faire que mon =C3=A9qui=
+pe a fait un travail de veille technologique.<br>J&#39;ai du mal =C3=A0 com=
+prendre aussi alors que je n&#39;y connais rien en react ou en backend comm=
+ent trouver les infos. Je m&#39;explique, il faut d=C3=A9terminer les besoi=
+ns gr=C3=A2ce aux User stories. Mais pour moi dessus tout est un besoin, do=
+nc si on prend l&#39;affichage en temps r=C3=A9el de la cr=C3=A9ation d&#39=
+;un menu sur la m=C3=AAme page. Je suis cens=C3=A9 fouiller toutes les libr=
+airies de react pour savoir si une d&#39;elles fait =C3=A7a ? Pareil pour q=
+uand l&#39;utilisateur veut changer de typographie ou exporter en pdf, il f=
+aut =C3=A0 chaque fois que je fasse ces recherches ? C&#39;est ultra long. =
+Surtout que pour l&#39;instant je n&#39;ai que les bases du html, css et Ja=
+vascript. Donc quand je vois un article React Native, je perds un temps fou=
+ avant de comprendre que c&#39;est pas la m=C3=AAme chose que React par exe=
+mple.<br>Donc je t&#39;avoue que je n&#39;ai aucune id=C3=A9e de par o=C3=
+=B9 commencer. J&#39;ai l&#39;impression de devoir essayer de coder de mon =
+c=C3=B4t=C3=A9 le site pour comprendre ce que je dois faire mais ce n&#39;e=
+st pas l&#39;exercice demand=C3=A9.<br><br>Autre question, au niveau du Bac=
+k-end qu&#39;elle est la limite avec le Front. Par exemple, le client doit =
+pouvoir exporter son menu sur deliveroo en 1 clique. Donc j&#39;imagine que=
+ je vais utiliser l&#39;API de deliveroo. Mais dans les sp=C3=A9cifications=
+ techniques, je note =C3=A7a c=C3=B4t=C3=A9 Front parce que le client doit =
+cliquer sur un bouton, ou c=C3=B4t=C3=A9 back parce que j&#39;utilise une A=
+PI ?</div><div><br></div><div>Voil=C3=A0, comme tu peux voir, comme je ne c=
+omprends pas ce que ce projet vient faire dans la formation et aussi t=C3=
+=B4t, je suis perdu. Et je n&#39;arrive pas =C3=A0 avancer, car je ne sais =
+pas par o=C3=B9 commencer.</div></div><br><div class=3D"gmail_quote"><div d=
+ir=3D"ltr" class=3D"gmail_attr">Le=C2=A0sam. 3 juin 2023 =C3=A0=C2=A017:06,=
+ Antoine Creuzet &lt;<a href=3D"mailto:antoine.crzt@gmail.com" target=3D"_b=
+lank">antoine.crzt@gmail.com</a>&gt; a =C3=A9crit=C2=A0:<br></div><blockquo=
+te class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left-widt=
+h:1px;border-left-style:solid;padding-left:1ex;border-left-color:rgb(204,20=
+4,204)"><div dir=3D"ltr">Salut Ewen,=C2=A0<br><div><br></div><div>=C3=87a v=
+a je te remercie.</div><div><br></div><div>Ok c&#39;est not=C3=A9. Je compr=
+ends tout =C3=A0 fait. Le projet gestion de projet est, avec le P3 en Javas=
+cript, le plus dur de ta formation. Apr=C3=A8s, ce sera plus simple, et=C2=
+=A0+ motivant.</div><div>Tu finances ta formation de ta poche donc tu es li=
+bre de t&#39;organiser comme tu le d=C3=A9sires. Dans ce que tu paies, tu a=
+s droit =C3=A0 1 session de 30min par semaine=C2=A0+ autant de soutenances =
+que n=C3=A9cessaire.=C2=A0</div><div>Pour =C3=A9viter de perdre les session=
+s, je te propose qu&#39;on les rattrape, si tu le d=C3=A9sires, dans les se=
+maines qui viennent. On s&#39;arrangera.=C2=A0</div><div><br></div><div>Pou=
+r reprendre des sessions, c&#39;est ici :=C2=A0<a href=3D"https://calendly.=
+com/acrzt/mentorat" target=3D"_blank">https://calendly.com/acrzt/mentorat</=
+a></div><div><br></div><div>Bon courage, et bonne semaine =C3=A0 toi !=C2=
+=A0</div><div><br></div><div><br></div></div><br><div class=3D"gmail_quote"=
+><div dir=3D"ltr" class=3D"gmail_attr">Le=C2=A0ven. 2 juin 2023 =C3=A0=C2=
+=A016:02, Ewen Lefloch &lt;<a href=3D"mailto:ewenlelf@gmail.com" target=3D"=
+_blank">ewenlelf@gmail.com</a>&gt; a =C3=A9crit=C2=A0:<br></div><blockquote=
+ class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left-width:=
+1px;border-left-style:solid;padding-left:1ex;border-left-color:rgb(204,204,=
+204)"><div dir=3D"ltr">Bonjour=C2=A0Antoine,<br><br><div>Je vais bien et to=
+i ?<br><br></div><div>C&#39;est de ma faute j&#39;ai compl=C3=A8tement oubl=
+i=C3=A9 de caler des sessions, comme je fais les cours sur la gestion de pr=
+ojet et que j&#39;avance pas du tout sur le projet en lui-m=C3=AAme je n&#3=
+9;y pense pas. De plus, j&#39;ai eu une perte de motivation jusqu&#39;en d=
+=C3=A9but de semaine donc j&#39;ai tr=C3=A8s peu avanc=C3=A9 l=C3=A0-dessus=
+ et me suis repos=C3=A9 quelques jours. Je vais fixer une session pour apr=
+=C3=A8s le 11 et t&#39;enverrais des questions par mail la semaine prochain=
+e.<br><br>Merci pour ton questionnement,</div><div>Ewen</div></div><br><div=
+ class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">Le=C2=A0lun. 2=
+9 mai 2023 =C3=A0=C2=A010:42, Antoine Creuzet &lt;<a href=3D"mailto:antoine=
+.crzt@gmail.com" target=3D"_blank">antoine.crzt@gmail.com</a>&gt; a =C3=A9c=
+rit=C2=A0:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0=
+px 0px 0.8ex;border-left-width:1px;border-left-style:solid;padding-left:1ex=
+;border-left-color:rgb(204,204,204)"><div dir=3D"ltr">Salut Ewen,<div><br><=
+/div><div>Comment vas-tu ?</div><div><br></div><div>Cela fait un petit mome=
+nt qu&#39;on n&#39;a pas eu de sessions ensemble (pas la semaine derni=C3=
+=A8re, et pas de rdv de pr=C3=A9vu cette semaine).=C2=A0</div><div>Est-ce q=
+ue tu as des soucis particuliers de ton c=C3=B4t=C3=A9 / as besoin de mettr=
+e en pause ta formation ?=C2=A0</div><div><br></div><div>Tiens-moi au coura=
+nt, on peut s&#39;organiser en cons=C3=A9quence,=C2=A0</div><div>Antoine</d=
+iv></div>
+</blockquote></div>
+</blockquote></div>
+</blockquote></div>
+</blockquote></div></div>
+</blockquote></div></div>
+
+--0000000000008077c605fd9045b9--
